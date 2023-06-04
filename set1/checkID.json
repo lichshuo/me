@@ -6,16 +6,28 @@
     "machine": "AMD64",
     "os_name": "nt",
     "platform": "Windows-10-10.0.22621-SP0",
+<<<<<<< HEAD
     "processor": "ARMv8 (64-bit) Family 8 Model 0 Revision   0,  ",
+=======
+    "processor": "AMD64 Family 25 Model 68 Stepping 0, AuthenticAMD",
+>>>>>>> 459f0180d67b93c477c37dbe8bca3a67f076cc71
     "release": "10",
     "system": "Windows",
     "uname": [
         "Windows",
+<<<<<<< HEAD
         "4A03",
         "10",
         "10.0.22621",
         "AMD64",
         "ARMv8 (64-bit) Family 8 Model 0 Revision   0,  "
+=======
+        "\u674e\u660c\u6714",
+        "10",
+        "10.0.22621",
+        "AMD64",
+        "AMD64 Family 25 Model 68 Stepping 0, AuthenticAMD"
+>>>>>>> 459f0180d67b93c477c37dbe8bca3a67f076cc71
     ],
     "version": "10.0.22621",
     "python_build": [
@@ -30,5 +42,9 @@
         "11",
         "3"
     ],
+<<<<<<< HEAD
     "cpu_count": 4
+=======
+    "cpu_count": 12
+>>>>>>> 459f0180d67b93c477c37dbe8bca3a67f076cc71
 }
