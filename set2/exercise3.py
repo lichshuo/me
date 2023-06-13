@@ -31,8 +31,14 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three.
     """ 
-    return None
-
+    if moves and not should_move:
+        return "Duct Tape"
+    elif not moves and should_move:
+        return "WD-40"
+    elif not moves and not should_move:
+        return "No Problem"
+    else:
+        return "No Problem"
 
 def loops_preview():
     """Make 8 poops.
@@ -54,10 +60,10 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    stars_list = []
+    star_list = []
     for _ in range(10):
-        stars_list.append('*')
-    return stars_list
+        star_list.append("*")
+    return star_list
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -70,7 +76,8 @@ def loops_1c(number_of_items=5, symbol="#"):
     Remember that you're being passed arguments here. Don't hard code the number
     or the symbol, let it be whatever it wants to be.
     """
-    return None
+    items = [symbol] * number_of_items
+    return items
 
 
 def loops_2():
@@ -91,7 +98,8 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+    starfield = [['*'] * 10 for _ in range(10)]
+    return starfield
 
 
 def loops_3():
@@ -115,8 +123,13 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
-
+    number_block=[]
+    for i in range(10):
+        row=[]
+        for j in range(10):
+            row.append(str(i))
+        number_block.append(row)
+    return number_block
 
 def loops_4():
     """Make a block of numbers that rises left to right.
@@ -135,7 +148,11 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    block = []
+    for _ in range(10):
+        inner_block = [str(i) for i in range(10)]
+        block.append(inner_block)
+    return block
 
 
 def loops_5():
@@ -165,7 +182,14 @@ def loops_5():
         f"There are {num_bottles} green bottles"
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    block = []
+    for i in range(10):
+        inner_block = []
+        for j in range(5):
+            coord = "(i{}, j{})".format(i, j)
+            inner_block.append(coord)
+        block.append(inner_block)
+    return block
 
 
 def loops_6():
@@ -188,7 +212,11 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    wedge = []
+    for i in range(10):
+        row = [str(j) for j in range(i + 1)]
+        wedge.append(row)
+    return wedge
 
 
 def loops_7():
@@ -212,7 +240,15 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    pyramid = []
+
+    for i in range(5):
+        spaces = [' '] * (4 - i)
+        asterisks = ['*'] * (i * 2 + 1)
+        row = spaces + asterisks + spaces
+        pyramid.append(row)
+
+    return pyramid
 
 
 def little_printer(some_kind_of_list, exercise_name):
