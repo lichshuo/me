@@ -169,7 +169,14 @@ def diarist():
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
     pass
+file = open(LOCAL + "/Trispokedovetiles(laser).gcode" , "r")
+number = 0
+for line in file:
+  if "M10 P1" in line:
+    number += 1
 
+with open(LOCAL + "/lasers.pew" , "w") as lasers:
+  lasers.write(str(number))
 
 if __name__ == "__main__":
     print(get_some_details())
