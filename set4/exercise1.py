@@ -37,10 +37,23 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
+    import json
+
+def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    last_name = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    postcode = int(data["results"][0]["location"]["postcode"])
+    id_value = int(data["results"][0]["id"]["value"])
+    postcode_plus_id = postcode + id_value
+
+    return {
+        "lastName": last_name,
+        "password": password,
+        "postcodePlusID": postcode_plus_id
+    }
 
 
 def wordy_pyramid():
@@ -77,7 +90,18 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
+    
     pyramid = []
+    for length in range(3,21,2):
+        url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+        response = requests.get(url)
+        word = response.text
+        pyramid.append(word)
+    for length in range(20,2,-2):
+        url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+        response = requests.get(url)
+        word = response.text
+        pyramid.append(word)
 
     return pyramid
 
@@ -103,6 +127,28 @@ def pokedex(low=1, high=5):
         the_json = json.loads(r.text)
 
     return {"name": None, "weight": None, "height": None}
+
+import requests
+import json
+
+def pokedex(low=1, high=5):
+    tallest_pokemon = {"name": None, "weight": None, "height": None}
+    max_height = 0
+
+    for id in range(low, high + 1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        r = requests.get(url)
+
+        if r.status_code == 200:
+            pokemon_data = json.loads(r.text)
+            height = pokemon_data["height"]
+            if height > max_height:
+                max_height = height
+                tallest_pokemon["name"] = pokemon_data["name"]
+                tallest_pokemon["weight"] = pokemon_data["weight"]
+                tallest_pokemon["height"] = height
+
+    return tallest_pokemon
 
 
 def diarist():
